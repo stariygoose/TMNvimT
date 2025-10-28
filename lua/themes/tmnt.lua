@@ -1,43 +1,43 @@
 -- Eastman Comics - Kevin Eastman inspired theme
--- Черно-белая комикс-графика с зеленым акцентом
+-- Pure black & white comic graphics with turtle bandana accents
 
 local M = {}
 
 M.colors = {
-  -- Черно-белая основа (как ink на бумаге)
-  bg = "#212121",             
-  bg_alt = "#252525",       
-  bg_highlight = "#303030", 
-  fg = "#d0d0d0",           -- Светло-серый текст
-  fg_alt = "#808080",       -- Средний серый
+  -- === BASE COLORS (Ink & Paper) ===
+  -- Backgrounds
+  bg = "#212121",             -- Deep ink black
+  bg_alt = "#1a1a1a",         -- Alternative bg
+  bg_highlight = "#252525",   -- Highlighted lines
+  shadow = "#2a2a2a",         -- Deep shadows
   
-  -- Ink colors (черные чернила)
-  black = "#000000",        -- Абсолютный черный
-  ink = "#0d0d0d",          -- Ink black
-  shadow = "#2a2a2a",       -- Глубокая тень (светлее)
+  -- Foregrounds  
+  fg = "#e0e0e0",             -- Main text (paper white)
+  fg_alt = "#808080",         -- Secondary text
   
-  -- Paper/light (белая бумага)
-  white = "#ffffff",        -- Чистый белый
-  paper = "#f5f5f5",        -- Бумага
+  -- Pure contrast
+  black = "#000000",          -- Absolute black
+  white = "#ffffff",          -- Pure white
   
-  -- Turtle green (зеленый акцент черепашек)
-  turtle_green = "#4ca64c", -- Основной зеленый
-  neon_green = "#39ff14",   -- Неоновый зеленый
-  dark_green = "#2d5016",   -- Темно-зеленый
+  -- === URBAN COLORS (Sewer atmosphere) ===
+  concrete = "#6a6a6a",       -- Concrete gray
+  sewer_gray = "#404040",     -- Sewer darkness
+  rust = "#5a2a1a",           -- Deep rust (danger)
   
-  -- Urban colors (урбанистика)
-  sewer_gray = "#4a4a4a",   -- Серый канализации
-  rust = "#8b4513",         -- Ржавчина
-  concrete = "#6a6a6a",     -- Бетон
+  -- === TURTLE GREEN (Ooze/Mutation) ===
+  ooze_green = "#7fff00",     -- Radioactive ooze
+  turtle_green = "#4a9b4a",   -- Turtle skin
+  shadow_green = "#1a3d1a",   -- Dark sewers
   
-  -- Accents
-  main_accent = "#cd853f",       -- Оранжевый (повязки)
-  second_accent = "#ffd700",       -- Желтый
+  -- === BANDANA COLORS (Turtle Power!) ===
+  leo_blue = "#5B9BD5",           -- Leonardo: Leader, commands (светлее!)
+  raph_red = "#dc143c",           -- Raphael: Aggression, action
+  donnie_purple = "#9370db",      -- Donatello: Creativity, content (строки!)
+  mikey_orange = "#ff8c00",       -- Michelangelo: Tech, tools (свойства!)
   
-  crimson = "#dc143c",
-  royal_blue = "#4169e1",
-  dark_orange = "#ff8c00",
-  comics_purple = "#8b7ab8",
+  -- === UTILITY ===
+  warning = "#cd7f32",        -- Bronze warning
+  
   none = "NONE"
 }
 
@@ -53,197 +53,324 @@ M.setup = function()
   vim.g.colors_name = "eastman-comics"
   
   local highlights = {
-    -- Основные (чистая ч/б графика)
+    -- ============================================================================
+    -- EDITOR UI (Pure B&W comic style)
+    -- ============================================================================
+    
     Normal = { fg = c.fg, bg = c.bg },
     NormalFloat = { fg = c.fg, bg = c.bg_alt },
-    NormalNC = { fg = c.concrete, bg = c.bg },
+    NormalNC = { fg = c.fg_alt, bg = c.bg },
     
-    -- Курсор (зеленый как черепашки)
-    Cursor = { fg = c.black, bg = c.neon_green },
+    -- Cursor (Radioactive ooze!)
+    Cursor = { fg = c.black, bg = c.ooze_green },
     CursorLine = { bg = c.bg_highlight },
     CursorLineNr = { fg = c.turtle_green, bg = c.bg_highlight, bold = true },
+    CursorColumn = { bg = c.bg_highlight },
+    ColorColumn = { bg = c.bg_highlight },
+    
     LineNr = { fg = c.sewer_gray },
     SignColumn = { bg = c.bg },
     
-    -- Выделение (темно-зеленый)
-    Visual = { bg = c.dark_green, fg = c.white },
-    VisualNOS = { bg = c.dark_green },
-    Search = { fg = c.black, bg = c.neon_green, bold = true },
-    IncSearch = { fg = c.black, bg = c.second_accent, bold = true },
+    -- Selection (turtle green shadow)
+    Visual = { bg = c.shadow_green, fg = c.white },
+    VisualNOS = { bg = c.shadow_green },
+    Search = { fg = c.black, bg = c.ooze_green, bold = true },
+    IncSearch = { fg = c.black, bg = c.donnie_purple, bold = true },
+    CurSearch = { fg = c.black, bg = c.donnie_purple, bold = true },
     
-    -- Интерфейс
+    -- UI Elements
     StatusLine = { fg = c.white, bg = c.sewer_gray, bold = true },
     StatusLineNC = { fg = c.concrete, bg = c.bg_alt },
     VertSplit = { fg = c.sewer_gray, bg = c.bg },
+    WinSeparator = { fg = c.sewer_gray, bg = c.bg },
+    
+    -- Popup Menu
     Pmenu = { fg = c.fg, bg = c.bg_alt },
     PmenuSel = { fg = c.black, bg = c.turtle_green, bold = true },
     PmenuSbar = { bg = c.shadow },
     PmenuThumb = { bg = c.turtle_green },
     
-    -- Синтаксис - КОМИКС СТИЛЬ
+    -- Tabs
+    TabLine = { fg = c.concrete, bg = c.bg_alt },
+    TabLineSel = { fg = c.white, bg = c.sewer_gray, bold = true },
+    TabLineFill = { bg = c.bg },
+    
+    FloatBorder = { fg = c.sewer_gray, bg = c.bg_alt },
+    FloatTitle = { fg = c.turtle_green, bg = c.bg_alt, bold = true },
+    
+    -- Messages
+    ErrorMsg = { fg = c.rust, bold = true },
+    WarningMsg = { fg = c.warning, bold = true },
+    ModeMsg = { fg = c.turtle_green, bold = true },
+    MoreMsg = { fg = c.turtle_green },
+    Question = { fg = c.turtle_green },
+    
+    MatchParen = { fg = c.ooze_green, bold = true, underline = true },
+    NonText = { fg = c.sewer_gray },
+    SpecialKey = { fg = c.sewer_gray },
+    Whitespace = { fg = c.shadow },
+    
+    -- ============================================================================
+    -- SYNTAX BASE (B&W foundation)
+    -- ============================================================================
+    
     Comment = { fg = c.concrete, italic = true },
     
-    -- Константы (белым - яркий свет)
-    Constant = { fg = c.white },
-    String = { fg = c.fg },
-    Character = { fg = c.fg },
-    Number = { fg = c.white, bold = true },
-    Boolean = { fg = c.white, bold = true },
-    Float = { fg = c.white },
+    -- Constants (Mikey - technical values)
+    Constant = { fg = c.mikey_orange },
+    String = { fg = c.donnie_purple },
+    Character = { fg = c.donnie_purple },
+    Number = { fg = c.donnie_purple, bold = true },
+    Boolean = { fg = c.raph_red, bold = true },
+    Float = { fg = c.donnie_purple },
     
-    -- Ключевые слова - ЗЕЛЕНЫЕ (turtle power!)
-    Keyword = { fg = c.turtle_green, bold = true },
-    Function = { fg = c.royal_blue, bold = true },
+    -- Identifiers
     Identifier = { fg = c.fg },
-    Statement = { fg = c.turtle_green, bold = true },
-    Conditional = { fg = c.turtle_green, bold = true },
-    Repeat = { fg = c.turtle_green, bold = true },
-    Label = { fg = c.turtle_green },
-    Operator = { fg = c.white },
-    Exception = { fg = c.turtle_green, bold = true },
+    Function = { fg = c.leo_blue, bold = true },
     
-    -- Типы - БЕЛЫЕ (чистые линии)
-    Type = { fg = c.white, bold = true },
-    StorageClass = { fg = c.turtle_green },
-    Structure = { fg = c.white, bold = true },
-    Typedef = { fg = c.white },
+    -- Statements (Raph - action words!)
+    Statement = { fg = c.raph_red, bold = true },
+    Conditional = { fg = c.raph_red, bold = true },
+    Repeat = { fg = c.raph_red, bold = true },
+    Label = { fg = c.raph_red },
+    Operator = { fg = c.raph_red },
+    Keyword = { fg = c.raph_red, bold = true },
+    Exception = { fg = c.raph_red, bold = true },
     
-    -- Препроцессор - ОРАНЖЕВЫЙ (как повязки)
-    PreProc = { fg = c.main_accent },
-    Include = { fg = c.main_accent },
-    Define = { fg = c.main_accent },
-    Macro = { fg = c.main_accent },
-    PreCondit = { fg = c.main_accent },
+    -- Types (Leo - structure)
+    Type = { fg = c.leo_blue, bold = true },
+    StorageClass = { fg = c.raph_red },
+    Structure = { fg = c.leo_blue, bold = true },
+    Typedef = { fg = c.leo_blue },
     
-    -- Специальные - зеленый акцент
-    Special = { fg = c.neon_green },
-    SpecialChar = { fg = c.neon_green },
-    Tag = { fg = c.turtle_green },
-    Delimiter = { fg = c.sewer_gray },
+    -- Preprocessor (Mikey - external tools)
+    PreProc = { fg = c.mikey_orange },
+    Include = { fg = c.mikey_orange },
+    Define = { fg = c.mikey_orange },
+    Macro = { fg = c.mikey_orange },
+    PreCondit = { fg = c.mikey_orange },
+    
+    -- Special (Ooze - mutations!)
+    Special = { fg = c.ooze_green },
+    SpecialChar = { fg = c.ooze_green },
+    Tag = { fg = c.fg, bold = true },
+    Delimiter = { fg = c.concrete },
     SpecialComment = { fg = c.turtle_green, italic = true },
-    Debug = { fg = c.neon_green },
+    Debug = { fg = c.ooze_green },
     
-    -- Ошибки (желтый/оранжевый предупреждения)
     Error = { fg = c.white, bg = c.rust, bold = true },
-    ErrorMsg = { fg = c.main_accent, bold = true },
-    WarningMsg = { fg = c.second_accent, bold = true },
-    Todo = { fg = c.black, bg = c.second_accent, bold = true },
+    Todo = { fg = c.black, bg = c.warning, bold = true },
+    Underlined = { underline = true },
     
-    -- Diff
-    DiffAdd = { fg = c.turtle_green, bg = c.bg_highlight },
-    DiffChange = { fg = c.second_accent, bg = c.bg_highlight },
-    DiffDelete = { fg = c.rust, bg = c.bg_highlight },
-    DiffText = { fg = c.white, bg = c.dark_green, bold = true },
+    -- ============================================================================
+    -- TREESITTER (Turtle Power!)
+    -- ============================================================================
     
-    -- Git signs
-    GitSignsAdd = { fg = c.turtle_green },
-    GitSignsChange = { fg = c.second_accent },
-    GitSignsDelete = { fg = c.rust },
-    
-    -- Treesitter - КОМИКС ГРАФИКА
+    -- Variables (paper white)
     ["@variable"] = { fg = c.fg },
     ["@variable.builtin"] = { fg = c.white },
-    ["@variable.parameter"] = { fg = c.comics_purple },
-    ["@variable.member"] = { fg = c.dark_orange},
+    ["@variable.parameter"] = { fg = c.fg },
+    ["@variable.member"] = { fg = c.mikey_orange },  -- Mikey: object properties
     
-    ["@constant"] = { fg = c.white },
-    ["@constant.builtin"] = { fg = c.white, bold = true },
-    ["@constant.macro"] = { fg = c.main_accent },
+    -- Constants (Mikey - technical settings)
+    ["@constant"] = { fg = c.mikey_orange },
+    ["@constant.builtin"] = { fg = c.mikey_orange, bold = true },
+    ["@constant.macro"] = { fg = c.mikey_orange },
     
-    ["@module"] = { fg = c.white },
-    ["@label"] = { fg = c.turtle_green },
+    ["@module"] = { fg = c.mikey_orange },
+    ["@label"] = { fg = c.raph_red },
     
-    -- Функции - белые жирные линии
-    ["@function"] = { fg = c.royal_blue, bold = true },
-    ["@function.builtin"] = { fg = c.royal_blue, bold = true },
-    ["@function.call"] = { fg = c.royal_blue },
-    ["@function.macro"] = { fg = c.crimson},
-    ["@function.method"] = { fg = c.royal_blue },
-    ["@function.method.call"] = { fg = c.royal_blue},
+    -- Functions (Leo - commands of the leader!)
+    ["@function"] = { fg = c.leo_blue, bold = true },
+    ["@function.builtin"] = { fg = c.leo_blue, bold = true },
+    ["@function.call"] = { fg = c.leo_blue },
+    ["@function.macro"] = { fg = c.mikey_orange },
+    ["@function.method"] = { fg = c.leo_blue, bold = true },
+    ["@function.method.call"] = { fg = c.leo_blue },
     
-    -- Ключевые слова - зеленые
-    ["@keyword"] = { fg = c.crimson , bold = true  },
-    ["@keyword.function"] = { fg = c.turtle_green, bold = true },
-    ["@keyword.return"] = { fg = c.turtle_green, bold = true },
-    ["@keyword.operator"] = { fg = c.turtle_green },
-    ["@keyword.import"] = { fg = c.main_accent },
-    ["@keyword.conditional"] = { fg = c.turtle_green, bold = true },
-    ["@keyword.repeat"] = { fg = c.turtle_green, bold = true },
+    -- Keywords (Raph - aggressive action!)
+    ["@keyword"] = { fg = c.raph_red, bold = true },
+    ["@keyword.function"] = { fg = c.raph_red, bold = true },
+    ["@keyword.return"] = { fg = c.raph_red, bold = true },
+    ["@keyword.operator"] = { fg = c.raph_red },
+    ["@keyword.import"] = { fg = c.mikey_orange },  -- Mikey: external tools
+    ["@keyword.export"] = { fg = c.mikey_orange },
+    ["@keyword.conditional"] = { fg = c.raph_red, bold = true },
+    ["@keyword.repeat"] = { fg = c.raph_red, bold = true },
+    ["@keyword.modifier"] = { fg = c.raph_red },
     
-    -- Типы
-    ["@type"] = { fg = c.white, bold = true },
-    ["@type.builtin"] = { fg = c.white, bold = true },
-    ["@type.definition"] = { fg = c.white, bold = true },
-    ["@type.qualifier"] = { fg = c.turtle_green },
+    -- Types (Leo - organized structure)
+    ["@type"] = { fg = c.leo_blue, bold = true },
+    ["@type.builtin"] = { fg = c.leo_blue, bold = true },
+    ["@type.definition"] = { fg = c.leo_blue, bold = true },
+    ["@type.qualifier"] = { fg = c.raph_red },
     
-    -- Строки
-    ["@string"] = { fg = c.fg },
-    ["@string.escape"] = { fg = c.neon_green },
-    ["@string.special"] = { fg = c.turtle_green },
-    ["@string.regexp"] = { fg = c.main_accent },
+    -- Strings (Donnie - creative content!)
+    ["@string"] = { fg = c.donnie_purple },
+    ["@string.escape"] = { fg = c.ooze_green },  -- Ooze mutations!
+    ["@string.special"] = { fg = c.ooze_green },
+    ["@string.regexp"] = { fg = c.donnie_purple, italic = true },
     
-    ["@character"] = { fg = c.fg },
-    ["@number"] = { fg = c.white, bold = true },
-    ["@boolean"] = { fg = c.white, bold = true },
-    ["@float"] = { fg = c.white },
+    ["@character"] = { fg = c.donnie_purple },
+    ["@number"] = { fg = c.donnie_purple, bold = true },
+    ["@boolean"] = { fg = c.raph_red, bold = true },  -- Raph: true/false decisiveness
+    ["@float"] = { fg = c.donnie_purple },
     
-    -- Tags
-    ["@tag"] = { fg = c.cold_grey, bold = true },
-    ["@tag.attribute"] = { fg = c.grey },
-    -- Операторы
-    ["@operator"] = { fg = c.white },
-    ["@punctuation.bracket"] = { fg = c.concrete },
+    -- Operators (Raph - direct action!)
+    ["@operator"] = { fg = c.raph_red },
+    ["@punctuation.bracket"] = { fg = c.white },
     ["@punctuation.delimiter"] = { fg = c.concrete },
-    ["@punctuation.special"] = { fg = c.turtle_green },
+    ["@punctuation.special"] = { fg = c.ooze_green },
     
     ["@comment"] = { fg = c.concrete, italic = true },
     
-    -- Markup (как в комиксах)
+    -- Tags (white outlines like comic panels)
+    ["@tag"] = { fg = c.white, bold = true },
+    ["@tag.attribute"] = { fg = c.mikey_orange },
+    ["@tag.delimiter"] = { fg = c.concrete },
+    
+    -- Properties (Mikey - technical parameters)
+    ["@property"] = { fg = c.mikey_orange },
+    
+    -- Constructors
+    ["@constructor"] = { fg = c.leo_blue, bold = true },
+    
+    -- Markup (comic book style!)
     ["@markup.strong"] = { fg = c.white, bold = true },
     ["@markup.italic"] = { fg = c.fg, italic = true },
     ["@markup.underline"] = { underline = true },
-    ["@markup.heading"] = { fg = c.turtle_green, bold = true },
-    ["@markup.link"] = { fg = c.main_accent, underline = true },
-    ["@markup.list"] = { fg = c.turtle_green },
+    ["@markup.strike"] = { strikethrough = true },
+    ["@markup.heading"] = { fg = c.leo_blue, bold = true },
+    ["@markup.link"] = { fg = c.mikey_orange, underline = true },
+    ["@markup.link.url"] = { fg = c.concrete, underline = true },
+    ["@markup.list"] = { fg = c.raph_red },
+    ["@markup.list.checked"] = { fg = c.turtle_green },
+    ["@markup.list.unchecked"] = { fg = c.concrete },
+    ["@markup.raw"] = { fg = c.donnie_purple },
+    ["@markup.quote"] = { fg = c.concrete, italic = true },
     
+    -- ============================================================================
     -- LSP
+    -- ============================================================================
+    
     DiagnosticError = { fg = c.rust },
-    DiagnosticWarn = { fg = c.second_accent },
+    DiagnosticWarn = { fg = c.warning },
     DiagnosticInfo = { fg = c.turtle_green },
     DiagnosticHint = { fg = c.concrete },
     
     DiagnosticUnderlineError = { undercurl = true, sp = c.rust },
-    DiagnosticUnderlineWarn = { undercurl = true, sp = c.second_accent },
+    DiagnosticUnderlineWarn = { undercurl = true, sp = c.warning },
     DiagnosticUnderlineInfo = { undercurl = true, sp = c.turtle_green },
     DiagnosticUnderlineHint = { undercurl = true, sp = c.concrete },
     
-    -- Telescope
-    TelescopeSelection = { fg = c.white, bg = c.dark_green, bold = true },
-    TelescopeSelectionCaret = { fg = c.neon_green, bg = c.dark_green },
-    TelescopeMatching = { fg = c.neon_green, bold = true },
-    TelescopeBorder = { fg = c.sewer_gray },
-    TelescopePromptPrefix = { fg = c.turtle_green },
+    DiagnosticVirtualTextError = { fg = c.rust, italic = true },
+    DiagnosticVirtualTextWarn = { fg = c.warning, italic = true },
+    DiagnosticVirtualTextInfo = { fg = c.turtle_green, italic = true },
+    DiagnosticVirtualTextHint = { fg = c.concrete, italic = true },
     
-    -- NvimTree
+    -- LSP Semantic
+    ["@lsp.type.class"] = { fg = c.leo_blue, bold = true },
+    ["@lsp.type.decorator"] = { fg = c.mikey_orange },
+    ["@lsp.type.enum"] = { fg = c.leo_blue, bold = true },
+    ["@lsp.type.enumMember"] = { fg = c.mikey_orange },
+    ["@lsp.type.function"] = { fg = c.leo_blue, bold = true },
+    ["@lsp.type.interface"] = { fg = c.leo_blue, bold = true },
+    ["@lsp.type.macro"] = { fg = c.mikey_orange },
+    ["@lsp.type.method"] = { fg = c.leo_blue },
+    ["@lsp.type.namespace"] = { fg = c.mikey_orange },
+    ["@lsp.type.parameter"] = { fg = c.fg },
+    ["@lsp.type.property"] = { fg = c.mikey_orange },
+    ["@lsp.type.struct"] = { fg = c.leo_blue, bold = true },
+    ["@lsp.type.type"] = { fg = c.leo_blue, bold = true },
+    ["@lsp.type.typeParameter"] = { fg = c.leo_blue },
+    ["@lsp.type.variable"] = { fg = c.fg },
+    
+    -- ============================================================================
+    -- GIT (Turtle victory = green, conflict = rust)
+    -- ============================================================================
+    
+    DiffAdd = { fg = c.turtle_green, bg = c.bg_highlight },
+    DiffChange = { fg = c.warning, bg = c.bg_highlight },
+    DiffDelete = { fg = c.rust, bg = c.bg_highlight },
+    DiffText = { fg = c.white, bg = c.shadow_green, bold = true },
+    
+    GitSignsAdd = { fg = c.turtle_green },
+    GitSignsChange = { fg = c.warning },
+    GitSignsDelete = { fg = c.rust },
+    GitSignsCurrentLineBlame = { fg = c.sewer_gray, italic = true },
+    
+    -- ============================================================================
+    -- TELESCOPE
+    -- ============================================================================
+    
+    TelescopeNormal = { fg = c.fg, bg = c.bg_alt },
+    TelescopeBorder = { fg = c.sewer_gray, bg = c.bg_alt },
+    TelescopePromptNormal = { fg = c.fg, bg = c.bg_alt },
+    TelescopePromptBorder = { fg = c.sewer_gray, bg = c.bg_alt },
+    TelescopePromptTitle = { fg = c.turtle_green, bold = true },
+    TelescopePromptPrefix = { fg = c.turtle_green, bold = true },
+    TelescopeSelection = { fg = c.white, bg = c.shadow_green, bold = true },
+    TelescopeSelectionCaret = { fg = c.ooze_green, bg = c.shadow_green, bold = true },
+    TelescopeMultiSelection = { fg = c.turtle_green },
+    TelescopeMatching = { fg = c.ooze_green, bold = true },
+    
+    -- ============================================================================
+    -- NVIM-TREE
+    -- ============================================================================
+    
+    NvimTreeNormal = { fg = c.fg, bg = c.bg },
     NvimTreeFolderName = { fg = c.fg },
     NvimTreeFolderIcon = { fg = c.turtle_green },
     NvimTreeOpenedFolderName = { fg = c.white, bold = true },
     NvimTreeEmptyFolderName = { fg = c.concrete },
     NvimTreeRootFolder = { fg = c.turtle_green, bold = true },
-    NvimTreeSpecialFile = { fg = c.main_accent },
-    NvimTreeExecFile = { fg = c.white, bold = true },
-    NvimTreeGitDirty = { fg = c.second_accent },
+    NvimTreeSpecialFile = { fg = c.mikey_orange },
+    NvimTreeExecFile = { fg = c.leo_blue, bold = true },
+    NvimTreeImageFile = { fg = c.donnie_purple },
+    NvimTreeSymlink = { fg = c.leo_blue, underline = true },
+    
+    NvimTreeGitDirty = { fg = c.warning },
+    NvimTreeGitStaged = { fg = c.turtle_green },
+    NvimTreeGitMerge = { fg = c.raph_red },
+    NvimTreeGitRenamed = { fg = c.warning },
     NvimTreeGitNew = { fg = c.turtle_green },
     NvimTreeGitDeleted = { fg = c.rust },
     
-    -- Floating windows
-    FloatBorder = { fg = c.sewer_gray, bg = c.bg_alt },
-    FloatTitle = { fg = c.turtle_green, bg = c.bg_alt, bold = true },
+    NvimTreeIndentMarker = { fg = c.sewer_gray },
+    NvimTreeOpenedFile = { fg = c.white, bold = true },
     
-    -- Tabs
-    -- TabLine = { fg = c.concrete, bg = c.bg_alt },
-    -- TabLineSel = { fg = c.white, bg = c.sewer_gray, bold = true },
-    -- TabLineFill = { bg = c.bg },
+    -- ============================================================================
+    -- CMP (Autocompletion)
+    -- ============================================================================
+    
+    CmpItemAbbrMatch = { fg = c.ooze_green, bold = true },
+    CmpItemAbbrMatchFuzzy = { fg = c.turtle_green },
+    CmpItemKindFunction = { fg = c.leo_blue },
+    CmpItemKindMethod = { fg = c.leo_blue },
+    CmpItemKindVariable = { fg = c.fg },
+    CmpItemKindKeyword = { fg = c.raph_red },
+    CmpItemKindProperty = { fg = c.mikey_orange },
+    CmpItemKindUnit = { fg = c.white },
+    CmpItemKindConstant = { fg = c.mikey_orange },
+    CmpItemKindString = { fg = c.donnie_purple },
+    
+    -- ============================================================================
+    -- INDENT BLANKLINE
+    -- ============================================================================
+    
+    IndentBlanklineChar = { fg = c.shadow },
+    IndentBlanklineContextChar = { fg = c.sewer_gray },
+    
+    -- ============================================================================
+    -- WHICH-KEY
+    -- ============================================================================
+    
+    WhichKey = { fg = c.turtle_green, bold = true },
+    WhichKeyGroup = { fg = c.leo_blue },
+    WhichKeyDesc = { fg = c.fg },
+    WhichKeySeparator = { fg = c.concrete },
+    WhichKeyFloat = { bg = c.bg_alt },
+    WhichKeyBorder = { fg = c.sewer_gray, bg = c.bg_alt },
   }
   
   for group, settings in pairs(highlights) do
