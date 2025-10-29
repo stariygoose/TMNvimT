@@ -85,22 +85,39 @@ M.setup = function()
     WinSeparator = { fg = c.sewer_gray, bg = c.bg },
     
     -- Popup Menu
-    Pmenu = { fg = c.fg, bg = c.bg_alt },
+    Pmenu = { fg = c.fg, bg = c.bg_highlight },
     PmenuSel = { fg = c.black, bg = c.turtle_green, bold = true },
     PmenuSbar = { bg = c.shadow },
     PmenuThumb = { bg = c.turtle_green },
     
     -- Tabs
-    TabLine = { fg = c.concrete, bg = c.bg_alt },
-    TabLineSel = { fg = c.white, bg = c.sewer_gray, bold = true },
-    TabLineFill = { bg = c.bg },
-    
+    TabLineFill = { fg = c.concrete, bg = c.bg },
+
+    -- Icons
+    BufferLineFill = { bg = c.bg },
+    BufferLineBufferSelected = { fg = c.leo_blue, bold = true },
+    -- Indicator
+    BufferLineIndicatorSelected = { fg = c.leo_blue },
+    -- Errors
+    BufferLineErrorSelected = { fg = c.raph_red, bold = true, italic = true },
+    BufferLineErrorDiagnosticSelected = { fg = c.raph_red, },
+    -- BufferLineErrorDiagnosticVisible = { fg = c.raph_red, },
+    -- Warnings
+    BufferLineWarningSelected = { fg = c.mikey_orange, bold = true, italic = true },
+    BufferLineWarningDiagnosticSelected = { fg = c.mikey_orange, },
+-- BufferLineWarningDiagnosticVisible = { fg = c.mikey_orange, },
+    -- Hints
+    BufferLineHintSelected = { link = "BufferLineBufferSelected" },
+    BufferLineHintDiagnosticSelected = { link = "BufferLineBufferSelected" },
+
+
+-- и т.д.
     FloatBorder = { fg = c.sewer_gray, bg = c.bg_alt },
     FloatTitle = { fg = c.turtle_green, bg = c.bg_alt, bold = true },
     
     -- Messages
-    ErrorMsg = { fg = c.rust, bold = true },
-    WarningMsg = { fg = c.warning, bold = true },
+    ErrorMsg = { fg = c.raph_red, bold = true },
+    WarningMsg = { fg = c.warning },
     ModeMsg = { fg = c.turtle_green, bold = true },
     MoreMsg = { fg = c.turtle_green },
     Question = { fg = c.turtle_green },
@@ -158,8 +175,8 @@ M.setup = function()
     SpecialComment = { fg = c.turtle_green, italic = true },
     Debug = { fg = c.ooze_green },
     
-    Error = { fg = c.white, bg = c.rust, bold = true },
-    Todo = { fg = c.black, bg = c.warning, bold = true },
+    Error = { fg = c.white, bg = c.raph_red, bold = true },
+    Todo = { fg = c.black, bg = c.mikey_orange, bold = true },
     Underlined = { underline = true },
     
     -- ============================================================================
@@ -253,17 +270,17 @@ M.setup = function()
     -- LSP
     -- ============================================================================
     
-    DiagnosticError = { fg = c.rust },
+    DiagnosticError = { fg = c.raph_red },
     DiagnosticWarn = { fg = c.warning },
     DiagnosticInfo = { fg = c.turtle_green },
     DiagnosticHint = { fg = c.concrete },
     
-    DiagnosticUnderlineError = { undercurl = true, sp = c.rust },
+    DiagnosticUnderlineError = { undercurl = true, sp = c.raph_red },
     DiagnosticUnderlineWarn = { undercurl = true, sp = c.warning },
     DiagnosticUnderlineInfo = { undercurl = true, sp = c.turtle_green },
     DiagnosticUnderlineHint = { undercurl = true, sp = c.concrete },
     
-    DiagnosticVirtualTextError = { fg = c.rust, italic = true },
+    DiagnosticVirtualTextError = { fg = c.raph_red, italic = true },
     DiagnosticVirtualTextWarn = { fg = c.warning, italic = true },
     DiagnosticVirtualTextInfo = { fg = c.turtle_green, italic = true },
     DiagnosticVirtualTextHint = { fg = c.concrete, italic = true },
@@ -337,8 +354,11 @@ M.setup = function()
     NvimTreeGitDeleted = { fg = c.rust },
     
     NvimTreeIndentMarker = { fg = c.sewer_gray },
-    NvimTreeOpenedFile = { fg = c.white, bold = true },
-    
+    NvimTreeOpenedHL = { fg = c.leo_blue, bold = true },
+
+    -- NvimTreeLspDiagnosticsError = { fg = c.white, bg = c.raph_red },
+    -- NvimTreeLspDiagnosticsWarning = { fg = c.white, bg = c.mikey_orange },
+
     -- ============================================================================
     -- CMP (Autocompletion)
     -- ============================================================================

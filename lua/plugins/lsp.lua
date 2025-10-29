@@ -9,7 +9,8 @@ return {
     opts = {
       ensure_installed = {
         "lua_ls",
-        "vtsls"
+        "vtsls",
+        "rust_analyzer",
       }
     },
   },
@@ -42,5 +43,9 @@ return {
   end,
   config = function()
   end,
-}
+},
+  {
+    'mrcjkb/rustaceanvim',
+    lazy = false, -- This plugin is already lazy
+  }
 }

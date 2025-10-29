@@ -24,7 +24,7 @@ map('n', '<C-l>', '<C-w>l', { desc = 'Move to right window' })
 map("n", "<C-`>", "<cmd>noh<CR>", { desc = "Clear highlights" })
 
 -- File Explorer
-map("n", "<leader>e", "<Cmd>Neotree toggle<CR>", {desc = "Toggle File Explorer"})
+map("n", "<leader>e", "<Cmd>NvimTreeToggle<CR>", {desc = "Toggle File Explorer"})
 
 -- Smooth scroll
 local keymap = {
@@ -53,8 +53,8 @@ map('n', '<leader>fr', builtin.oldfiles, { desc = 'Recent files' })
 map('n', '<leader>fg', builtin.live_grep, { desc = 'Live grep' })
 map('n', '<leader>fw', builtin.grep_string, { desc = 'Find word under cursor' })
 map('n', '<leader>fz', builtin.current_buffer_fuzzy_find, { desc = 'Search in current buffer' })
--- Undo
-map('n', '<leader>u', '<Cmd>Telescope undo<CR>', { desc = 'Undo tree' })
+-- Theming
+map('n', '<leader>hh', '<Cmd>Telescope highlights<CR>', { desc = "Show highlights" })
 -- </Telescop>
 
 -- Comments
@@ -109,3 +109,4 @@ map('n', '<leader>bd', '<Cmd>BufferOrderByDirectory<CR>', { desc = 'Sort by dire
 map('n', '<leader>bl', '<Cmd>BufferOrderByLanguage<CR>', { desc = 'Sort by language' })
 map('n', '<leader>bw', '<Cmd>BufferOrderByWindowNumber<CR>', { desc = 'Sort by window number' })
 -- </Buffers>
+
