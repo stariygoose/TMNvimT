@@ -12,9 +12,14 @@ return {
         { "<leader>c", group = "Code (LSP)" },
         { "<leader>b", group = "Buffers" },
         { "<leader>h", group = "Highlights" },
-        { "<leader>w", desc = "Save" },
+        { "<leader>w", desc = "Save file" },
         { "<leader>q", desc = "Window quit" },
-        { "<leader>e", desc = "File Explorer" },
+        { "<leader>e", desc = "File Explorer (Toggle)" },
+        { "<leader>x", group = "Diagnostics" },
+        -- Git
+        { "<leader>g", group = "Git" },
+        { "<leader>gc", group = "Git Conflict" },
+        { "<leader>gd", group = "Git Diffview" },
       },
     },
     config = function(_, opts)

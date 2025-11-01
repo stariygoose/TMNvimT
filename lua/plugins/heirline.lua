@@ -103,13 +103,6 @@ return {
         local mode = self.mode:sub(1, 1)
         return { fg = "black", bg = self.mode_colors[mode] or "leo_blue", bold = true }
       end,
-      update = {
-        "ModeChanged",
-        pattern = "*:*",
-        callback = vim.schedule_wrap(function()
-          vim.cmd("redrawstatus")
-        end),
-      },
     }
 
     -- Git Branch (Turtle Green)

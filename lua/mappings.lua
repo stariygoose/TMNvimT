@@ -12,7 +12,7 @@ map('x', 'p', '"_dP', { desc = 'Paste without overwriting register' })
 
 map("n", "<leader>w", "<Cmd>w<CR>", {desc = "Save"})
 map("n", "<leader>q", "<Cmd>confirm q<CR>", {desc = "Window quit"})
-map("n", "<C-q>", "<Cmd>confirm qall<CR>", {desc = "General quit NeoVim"})
+map("n", "<leader>Q", "<Cmd>confirm qall<CR>", {desc = "General quit NeoVim"})
 
 -- Change windows
 map('n', '<C-h>', '<C-w>h', { desc = 'Move to left window' })
@@ -75,25 +75,16 @@ map("n", "F", vim.lsp.buf.hover, { desc = "Documentation under cursor" })
 
 -- <Buffers>
 -- Navigation
-map({"n", "v"}, "<A-.>", "<Cmd>BufferNext<CR>", { desc = "Next buffer" })
-map({"n", "v"}, "<A-,>", "<Cmd>BufferPrevious<CR>", { desc = "Previous buffer" })
-
--- Reorder buffers
-map({"n", "v"}, '<A->>', '<Cmd>BufferMoveNext<CR>', { desc = 'Move buffer right' })
-map({"n", "v"}, '<A-<>', '<Cmd>BufferMovePrevious<CR>', { desc = 'Move buffer left' })
+map({"n", "v"}, "<A-e>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
+map({"n", "v"}, "<A-q>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
+-- Navigation (Alternative)
+map({"n", "v"}, "<A->>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
+map({"n", "v"}, "<A-<>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
 
 -- Go to n buffer
-map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', { desc = 'Goto buffer 1' })
-map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', { desc = 'Goto buffer 2' })
-map('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', { desc = 'Goto buffer 3' })
-map('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', { desc = 'Goto buffer 4' })
-map('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', { desc = 'Goto buffer 5' })
-map('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', { desc = 'Goto buffer 6' })
-map('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', { desc = 'Goto buffer 7' })
-map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', { desc = 'Goto buffer 8' })
-map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', { desc = 'Goto buffer 9' })
-map('n', '<A-0>', '<Cmd>BufferLast<CR>', { desc = 'Goto last buffer' })
-
+for i = 1, 9 do
+  map("n", ("<A-%d>"):format(i), (":BufferLineGoToBuffer %d<CR>"):format(i), { desc = "Go to buffer " .. i })
+end
 -- Closing
 map('n', '<A-w>', '<Cmd>BufferClose<CR>', { desc = 'Close buffer' })
 map('n', '<leader>bc', '<Cmd>BufferClose<CR>', { desc = 'Close buffer' })
@@ -110,3 +101,19 @@ map('n', '<leader>bl', '<Cmd>BufferOrderByLanguage<CR>', { desc = 'Sort by langu
 map('n', '<leader>bw', '<Cmd>BufferOrderByWindowNumber<CR>', { desc = 'Sort by window number' })
 -- </Buffers>
 
+-- <Git>
+-- Diff View
+map('n', '<leader>gdo', '<cmd>DiffviewOpen<CR>', { desc = 'Diffview Open' })
+map('n', '<leader>gdc', '<cmd>DiffviewClose<CR>', { desc = 'Diffview Close' })
+map('n', '<leader>gdh', '<cmd>DiffviewFileHistory<CR>', { desc = 'Diffview History' })
+map('n', '<leader>gdf', '<cmd>DiffviewFileHistory %<CR>', { desc = 'Diffview File History' })
+map('n', '<leader>gdr', '<cmd>DiffviewRefresh<CR>', { desc = 'Diffview Refresh' })
+-- Git Conflict
+map('n', '<leader>gco', '<cmd>GitConflictChooseOurs<CR>', { desc = 'Choose Ours' })
+map('n', '<leader>gct', '<cmd>GitConflictChooseTheirs<CR>', { desc = 'Choose Theirs' })
+map('n', '<leader>gcb', '<cmd>GitConflictChooseBoth<CR>', { desc = 'Choose Both' })
+map('n', '<leader>gc0', '<cmd>GitConflictChooseNone<CR>', { desc = 'Choose None' })
+map('n', '<leader>gcn', '<cmd>GitConflictNextConflict<CR>', { desc = 'Next Conflict' })
+map('n', '<leader>gcp', '<cmd>GitConflictPrevConflict<CR>', { desc = 'Prev Conflict' })
+map('n', '<leader>gcl', '<cmd>GitConflictListQf<CR>', { desc = 'List Conflicts' })
+-- </Git>

@@ -98,14 +98,15 @@ M.setup = function()
     BufferLineBufferSelected = { fg = c.leo_blue, bold = true },
     -- Indicator
     BufferLineIndicatorSelected = { fg = c.leo_blue },
+    -- Numbers
+    BufferLineNumbers = { fg = c.mikey_orange },
+    BufferLineNumbersSelected = { fg = c.leo_blue },
     -- Errors
     BufferLineErrorSelected = { fg = c.raph_red, bold = true, italic = true },
     BufferLineErrorDiagnosticSelected = { fg = c.raph_red, },
-    -- BufferLineErrorDiagnosticVisible = { fg = c.raph_red, },
     -- Warnings
     BufferLineWarningSelected = { fg = c.mikey_orange, bold = true, italic = true },
     BufferLineWarningDiagnosticSelected = { fg = c.mikey_orange, },
--- BufferLineWarningDiagnosticVisible = { fg = c.mikey_orange, },
     -- Hints
     BufferLineHintSelected = { link = "BufferLineBufferSelected" },
     BufferLineHintDiagnosticSelected = { link = "BufferLineBufferSelected" },

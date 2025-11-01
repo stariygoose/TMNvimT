@@ -5,8 +5,9 @@ return {
   config = function ()
     require("bufferline").setup({
       options = {
+        numbers = "ordinal",
         diagnostics = "nvim_lsp",
-    diagnostics_update_in_insert = false,
+        diagnostics_update_in_insert = false,
 diagnostics_indicator = function(count, level, diagnostics_dict, context)
   local s = " "
   for e, n in pairs(diagnostics_dict) do

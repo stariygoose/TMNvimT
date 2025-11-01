@@ -70,4 +70,18 @@ vim.lsp.config('lua_ls', {
 vim.lsp.enable('vtsls')
 vim.lsp.enable('lua_ls')
 
-
+vim.diagnostic.config({
+  virtual_text = {
+    spacing = 4,        -- отступ от кода
+    prefix = '●',       -- символ перед ошибкой
+  },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+  float = {
+    border = 'rounded',  -- рамка для всплывающих окон
+    header = '',
+    prefix = '',
+  },
+})
