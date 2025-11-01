@@ -77,28 +77,11 @@ map("n", "F", vim.lsp.buf.hover, { desc = "Documentation under cursor" })
 -- Navigation
 map({"n", "v"}, "<A-e>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
 map({"n", "v"}, "<A-q>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
--- Navigation (Alternative)
-map({"n", "v"}, "<A->>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
-map({"n", "v"}, "<A-<>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
-
+map({"n", "v"}, "<A-w>", "<Cmd>bd<CR>", { desc = "Close buffer" })
 -- Go to n buffer
 for i = 1, 9 do
   map("n", ("<A-%d>"):format(i), (":BufferLineGoToBuffer %d<CR>"):format(i), { desc = "Go to buffer " .. i })
 end
--- Closing
-map('n', '<A-w>', '<Cmd>BufferClose<CR>', { desc = 'Close buffer' })
-map('n', '<leader>bc', '<Cmd>BufferClose<CR>', { desc = 'Close buffer' })
-map('n', '<leader>bo', '<Cmd>BufferCloseAllButCurrent<CR>', { desc = 'Close all except current' })
-
--- Pin / Unpin buffer
-map('n', '<A-p>', '<Cmd>BufferPin<CR>', { desc = 'Pin/Unpin buffer' })
-map('n', '<leader>bp', '<Cmd>BufferPin<CR>', { desc = 'Pin/Unpin buffer' })
-
--- Sorting
-map('n', '<leader>bb', '<Cmd>BufferOrderByBufferNumber<CR>', { desc = 'Sort by buffer number' })
-map('n', '<leader>bd', '<Cmd>BufferOrderByDirectory<CR>', { desc = 'Sort by directory' })
-map('n', '<leader>bl', '<Cmd>BufferOrderByLanguage<CR>', { desc = 'Sort by language' })
-map('n', '<leader>bw', '<Cmd>BufferOrderByWindowNumber<CR>', { desc = 'Sort by window number' })
 -- </Buffers>
 
 -- <Git>

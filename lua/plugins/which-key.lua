@@ -10,7 +10,6 @@ return {
       spec = {
         { "<leader>f", group = "Find (Telescope)" },
         { "<leader>c", group = "Code (LSP)" },
-        { "<leader>b", group = "Buffers" },
         { "<leader>h", group = "Highlights" },
         { "<leader>w", desc = "Save file" },
         { "<leader>q", desc = "Window quit" },
