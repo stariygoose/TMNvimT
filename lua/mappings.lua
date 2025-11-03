@@ -6,6 +6,9 @@ map("i", "jk", "<ESC>")
 -- Select all
 map("n", "<C-a>", "ggVG")
 
+-- Copy/Paste
+map("i", "<C-v>", "p", { desc = "Insert from buffer" })
+
 -- Better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
 map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
