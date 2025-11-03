@@ -93,26 +93,44 @@ M.setup = function()
 		-- Tabs
 		TabLineFill = { fg = c.concrete, bg = c.bg },
 
-		-- Icons
-		BufferLineFill = { bg = c.bg },
-		BufferLineBufferSelected = { fg = c.leo_blue, bold = true },
-		DevIconDefault = { fg = c.raph_red, bg = c.leo_blue },
+		-- Background
+		BufferTabpageFill = { bg = c.bg },
+		BufferDefaultCurrentTarget = { fg = c.leo_blue, bold = true },
 
-		-- Indicator
-		BufferLineIndicatorSelected = { fg = c.leo_blue },
-		-- Numbers
-		BufferLineNumbers = { fg = c.mikey_orange },
-		BufferLineNumbersSelected = { fg = c.leo_blue },
-		-- Errors
-		BufferLineErrorSelected = { fg = c.raph_red, bold = true, italic = true },
-		BufferLineErrorDiagnosticSelected = { fg = c.raph_red },
-		-- Warnings
-		BufferLineWarningSelected = { fg = c.mikey_orange, bold = true, italic = true },
-		BufferLineWarningDiagnosticSelected = { fg = c.mikey_orange },
+		-- Current (активный буфер)
+		BufferCurrent = { fg = c.leo_blue, bold = true },
+		BufferCurrentIndex = { fg = c.leo_blue },
+		BufferCurrentMod = { fg = c.leo_blue, bold = true },
+		BufferCurrentSign = { fg = c.leo_blue },
+		BufferCurrentTarget = { fg = c.leo_blue, bold = true },
+
+		-- Visible (видимый буфер)
+		BufferVisible = { fg = c.concrete },
+		BufferVisibleIndex = { fg = c.mikey_orange },
+		BufferVisibleMod = { fg = c.concrete },
+		BufferVisibleSign = { fg = c.concrete },
+
+		-- Inactive (неактивные буферы)
+		BufferInactive = { fg = c.concrete },
+		BufferInactiveIndex = { fg = c.mikey_orange },
+		BufferInactiveMod = { fg = c.concrete },
+		BufferInactiveSign = { fg = c.concrete },
+
+		-- Errors (как у тебя BufferLineErrorSelected)
+		BufferCurrentERROR = { fg = c.raph_red, bold = true, italic = true },
+		BufferCurrentERRORSign = { fg = c.raph_red },
+
+		-- Warnings (как у тебя BufferLineWarningSelected)
+		BufferCurrentWARN = { fg = c.mikey_orange, bold = true, italic = true },
+		BufferCurrentWARNSign = { fg = c.mikey_orange },
+
 		-- Hints
-		BufferLineHintSelected = { link = "BufferLineBufferSelected" },
-		BufferLineHintDiagnosticSelected = { link = "BufferLineBufferSelected" },
+		BufferCurrentHINT = { fg = c.leo_blue },
+		BufferCurrentHINTSign = { fg = c.leo_blue },
 
+		-- Info
+		BufferCurrentINFO = { fg = c.leo_blue },
+		BufferCurrentINFOSign = { fg = c.leo_blue },
 		-- и т.д.
 		FloatBorder = { fg = c.sewer_gray, bg = c.bg_alt },
 		FloatTitle = { fg = c.turtle_green, bg = c.bg_alt, bold = true },

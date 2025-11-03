@@ -84,13 +84,20 @@ map("n", "F", vim.lsp.buf.hover, { desc = "Documentation under cursor" })
 
 -- <Buffers>
 -- Navigation
-map({ "n", "v" }, "<A-e>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
-map({ "n", "v" }, "<A-q>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
-map({ "n", "v" }, "<A-w>", "<Cmd>bd<CR>", { desc = "Close buffer" })
+map({ "n", "v" }, "<A-e>", "<Cmd>BufferNext<CR>", { desc = "Next buffer" })
+map({ "n", "v" }, "<A-q>", "<Cmd>BufferPrevious<CR>", { desc = "Previous buffer" })
+map({ "n", "v" }, "<A-w>", "<Cmd>BufferClose<CR>", { desc = "Close buffer" }) -- Используем BufferClose из barbar
+
 -- Go to n buffer
 for i = 1, 9 do
-	map("n", ("<A-%d>"):format(i), (":BufferLineGoToBuffer %d<CR>"):format(i), { desc = "Go to buffer " .. i })
+	map("n", ("<A-%d>"):format(i), ("<Cmd>BufferGoto %d<CR>"):format(i), { desc = "Go to buffer " .. i })
 end
+
+-- Дополнительные полезные маппинги для barbar (опционально)
+map("n", "<A-c>", "<Cmd>BufferClose<CR>", { desc = "Close current buffer" })
+map("n", "<A-p>", "<Cmd>BufferPin<CR>", { desc = "Pin/unpin buffer" })
+map("n", "<A-,>", "<Cmd>BufferMovePrevious<CR>", { desc = "Move buffer left" })
+map("n", "<A-.>", "<Cmd>BufferMoveNext<CR>", { desc = "Move buffer right" })
 -- </Buffers>
 
 -- <Git>
