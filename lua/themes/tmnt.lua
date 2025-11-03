@@ -116,13 +116,29 @@ M.setup = function()
 		BufferInactiveMod = { fg = c.concrete },
 		BufferInactiveSign = { fg = c.concrete },
 
-		-- Errors (как у тебя BufferLineErrorSelected)
+		-- Errors в АКТИВНОМ буфере
 		BufferCurrentERROR = { fg = c.raph_red, bold = true, italic = true },
 		BufferCurrentERRORSign = { fg = c.raph_red },
 
-		-- Warnings (как у тебя BufferLineWarningSelected)
+		-- Errors в НЕАКТИВНОМ буфере (чтобы ошибки были видны!)
+		BufferInactiveERROR = { fg = c.raph_red }, -- Подсвечиваем красным
+		BufferInactiveERRORSign = { fg = c.raph_red }, -- Иконка тоже красная
+
+		-- Errors в ВИДИМОМ буфере
+		BufferVisibleERROR = { fg = c.raph_red },
+		BufferVisibleERRORSign = { fg = c.raph_red },
+
+		-- Warnings в АКТИВНОМ буфере
 		BufferCurrentWARN = { fg = c.mikey_orange, bold = true, italic = true },
 		BufferCurrentWARNSign = { fg = c.mikey_orange },
+
+		-- Warnings в НЕАКТИВНОМ буфере (чтобы варнинги были видны!)
+		BufferInactiveWARN = { fg = c.mikey_orange }, -- Подсвечиваем оранжевым
+		BufferInactiveWARNSign = { fg = c.mikey_orange }, -- Иконка тоже оранжевая
+
+		-- Warnings в ВИДИМОМ буфере
+		BufferVisibleWARN = { fg = c.mikey_orange },
+		BufferVisibleWARNSign = { fg = c.mikey_orange },
 
 		-- Hints
 		BufferCurrentHINT = { fg = c.leo_blue },
@@ -131,7 +147,7 @@ M.setup = function()
 		-- Info
 		BufferCurrentINFO = { fg = c.leo_blue },
 		BufferCurrentINFOSign = { fg = c.leo_blue },
-		-- и т.д.
+
 		FloatBorder = { fg = c.sewer_gray, bg = c.bg_alt },
 		FloatTitle = { fg = c.turtle_green, bg = c.bg_alt, bold = true },
 
