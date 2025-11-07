@@ -72,7 +72,8 @@ map("x", "<C-e>", "gc", { desc = "Toggle Comment", remap = true })
 
 -- <LSP>
 -- Navigation
-map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+local actions_preview = require("actions-preview")
+map({ "n", "v" }, "<leader>ca", actions_preview.code_actions, { desc = "Code actions preview" })
 map("n", "<leader>cd", vim.lsp.buf.definition, { desc = "Go to Definition" })
 map("n", "<leader>cD", vim.lsp.buf.declaration, { desc = "Go to Declaration" })
 map("n", "<leader>ci", vim.lsp.buf.implementation, { desc = "Go to Implementation" })

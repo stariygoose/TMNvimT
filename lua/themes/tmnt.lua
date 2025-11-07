@@ -341,11 +341,12 @@ M.setup = function()
 		-- ============================================================================
 		-- GIT (Turtle victory = green, conflict = rust)
 		-- ============================================================================
-
-		DiffAdd = { fg = c.turtle_green, bg = c.bg_highlight },
-		DiffChange = { fg = c.warning, bg = c.bg_highlight },
-		DiffDelete = { fg = c.rust, bg = c.bg_highlight },
-		DiffText = { fg = c.white, bg = c.shadow_green, bold = true },
+		DiffAdd = { fg = c.white, bg = c.turtle_green },
+		TelescopePreviewLine = { fg = c.white, bg = c.turtle_green },
+		TelescopePreviewMatch = { fg = c.white, bg = c.turtle_green },
+		DiffChange = { fg = c.white, bg = c.mikey_orange },
+		DiffDelete = { fg = c.white, bg = c.raph_red },
+		DiffText = { fg = c.white, bold = true },
 
 		GitSignsAdd = { fg = c.turtle_green },
 		GitSignsChange = { fg = c.warning },
