@@ -31,8 +31,8 @@ return {
 			highlight_diagnostics = "name",
 
 			icons = {
-				diagnostics_placement = "after",
-				git_placement = "after",
+				diagnostics_placement = "before",
+				git_placement = "before",
 				show = {
 					git = true,
 					diagnostics = true,

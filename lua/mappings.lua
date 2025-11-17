@@ -117,3 +117,6 @@ map("n", "<leader>gcn", "<cmd>GitConflictNextConflict<CR>", { desc = "Next Confl
 map("n", "<leader>gcp", "<cmd>GitConflictPrevConflict<CR>", { desc = "Prev Conflict" })
 map("n", "<leader>gcl", "<cmd>GitConflictListQf<CR>", { desc = "List Conflicts" })
 -- </Git>
+
+-- <MarkdownPreview>
+map("n", "<leader>m", "<cmd>MarkdownPreview<CR>", { desc = "Toggle Markdown Preview" })
