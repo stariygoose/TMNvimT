@@ -63,6 +63,13 @@ vim.lsp.config("lua_ls", {
 	},
 })
 -- </LUA>
+
+-- <Java>
+vim.lsp.config("jdtls", {
+	root_dir = vim.fs.root(0, { "gradlew", ".git", "mvnw" }),
+})
+-- </Java>
+
 vim.diagnostic.config({
 	virtual_text = {
 		spacing = 4, -- отступ от кода
@@ -82,3 +89,4 @@ vim.diagnostic.config({
 -- Enable Languages Server
 vim.lsp.enable("vtsls")
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("jdtls")
